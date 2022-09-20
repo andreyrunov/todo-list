@@ -7,10 +7,20 @@ function Auth() {
 		<form name='authForm' method='post' action='input1.php'>
 			<div className='wrapper-auth'>
 				<div className='input-wrapper'>
-					<input className='text-input' type='text' name='name' />
+					<input
+						className='text-input'
+						type='text'
+						name='name'
+						placeholder='Имя'
+					/>
 				</div>
 				<div className='input-wrapper'>
-					<input className='text-input' type='text' name='pass' />
+					<input
+						className='text-input'
+						type='text'
+						name='pass'
+						placeholder='Пароль'
+					/>
 				</div>
 				<div className='input-wrapper'>
 					<div className='btn-wrapper'>

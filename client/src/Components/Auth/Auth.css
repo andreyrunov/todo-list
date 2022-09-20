@@ -22,7 +22,7 @@ div .wrapper-auth{
 }
 
 .submit-btn {
-    width: 120px;
+    width: 150px;
     height: 40px;
     border: 1px solid #1AB8DB;
     border-radius: 20px;
@@ -33,7 +33,7 @@ div .wrapper-auth{
 }
 
 .reg-btn {
-    width: 120px;
+    width: 150px;
     height: 40px;
     border: 1px solid #ff7a7a;
     border-radius: 20px;
