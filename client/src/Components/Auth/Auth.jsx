@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import './Auth.css'
 
 function Auth() {
+	const [inputs, setInputs] = useState({})
+	const dispatch = useDispatch()
+	const submitHandler = (e) => {
+		e.preventDefault()
+		dispatch(authUser(inputs))
+		setInputs({})
+	}
 	return (
-		<form name='authForm' method='post' action='input1.php'>
+		// <form name='authForm' method='post' action='/auth/user'>
+		<form onSubmit={submitHandler}>
 			<div className='wrapper-auth'>
 				<div className='input-wrapper'>
 					<input
@@ -12,6 +21,7 @@ function Auth() {
 						type='text'
 						name='name'
 						placeholder='Имя'
+						value={inputs.name}
 					/>
 				</div>
 				<div className='input-wrapper'>
@@ -20,6 +30,7 @@ function Auth() {
 						type='text'
 						name='pass'
 						placeholder='Пароль'
+						value={inputs.pass}
 					/>
 				</div>
 				<div className='input-wrapper'>

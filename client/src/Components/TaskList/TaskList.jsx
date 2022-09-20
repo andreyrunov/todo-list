@@ -40,12 +40,13 @@ function TaskList() {
 					<div className='load-btn-wrapper'>
 						<button className='load-btn'>Загрузить еще</button>
 					</div>
-					<div className='add-btn-wrapper'>
-						<img className='add-btn' src='/img/add-btn.svg' alt='add-btn' />
-					</div>
 				</div>
 			</main>
-			<footer className='footer'>`</footer>
+			<footer className='footer'>
+				<div className='add-btn-wrapper'>
+					<img className='add-btn' src='/img/add-btn.svg' alt='add-btn' />
+				</div>
+			</footer>
 		</div>
 	)
 }

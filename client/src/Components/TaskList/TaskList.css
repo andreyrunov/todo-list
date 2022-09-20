@@ -126,7 +126,7 @@
 .add-btn {
     opacity: 90%;
     position: relative;
-    top: 40px;
+    top: -24px;
     cursor: pointer;
 }
 
@@ -136,6 +136,7 @@
 
 .footer {
     display: flex;
+    justify-content: center;
     height: 50px;
     background-color: #EEEEEE;
 }

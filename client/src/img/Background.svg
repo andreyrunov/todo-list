@@ -1,10 +1,1 @@
-<svg width="375" height="812" viewBox="0 0 375 812" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="375" height="812" fill="url(#paint0_linear_103_171)"/>
-<defs>
-<linearGradient id="paint0_linear_103_171" x1="187.5" y1="0" x2="187.5" y2="812" gradientUnits="userSpaceOnUse">
-<stop offset="0.0901748" stop-color="#E50000" stop-opacity="0.71"/>
-<stop offset="0.1125" stop-color="#DD0607" stop-opacity="0.720854"/>
-<stop offset="0.686673" stop-color="#1593AF"/>
-</linearGradient>
-</defs>
-</svg>
+<svg id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 5400 5400"><defs><style>.cls-1{fill:url(#Безымянный_градиент_2);}</style><linearGradient id="Безымянный_градиент_2" x1="2700" y1="5402" x2="2700" y2="2" gradientTransform="matrix(1, 0, 0, -1, 0, 5402)" gradientUnits="userSpaceOnUse"><stop offset="0.09" stop-color="#e30d13" stop-opacity="0.71"/><stop offset="0.11" stop-color="#dd0c15" stop-opacity="0.72"/><stop offset="0.69" stop-color="#1a93af"/></linearGradient></defs><rect class="cls-1" width="5400" height="5400"/></svg>
