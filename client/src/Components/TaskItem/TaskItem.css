@@ -1,0 +1,47 @@
+.todo-item-wrapper {
+    display: flex;
+    /* flex-direction: row;
+    justify-content: space-between; */
+}
+
+.todo-item {
+    width: 680px;
+    height: 45px;
+    margin: 5px 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #EEEEEE;
+}
+
+.checkbox-item-wrapper {
+    margin-left: 5px;
+    display: flex;
+    width: 5%;
+}
+
+.status-item-wrapper {
+    display: flex;
+    width: 20%;
+}
+
+.status-color {
+    width: 30px;
+    height: 12px;
+    background-color: #979797;
+}
+
+.done {
+    background-color: #00C938;
+}
+
+.delete {
+    background-color: #FF0404;
+}
+
+.task-item-wrapper {
+    display: flex;
+    width: 75%;
+}

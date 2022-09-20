@@ -1,4 +1,5 @@
 import React from 'react'
+import TaskItem from '../TaskItem/TaskItem'
 import './TaskList.css'
 
 function TaskList() {
@@ -25,12 +26,22 @@ function TaskList() {
 								<input type='checkbox' />
 							</div>
 							<div className='date-wrapper'>
-								<span>Дата</span>
+								<span>Статус</span>
 							</div>
 							<div className='task-wrapper'>
 								<span>Задача</span>
 							</div>
 						</div>
+					</div>
+					<TaskItem />
+					<TaskItem />
+					<TaskItem />
+					<TaskItem />
+					<div className='load-btn-wrapper'>
+						<button className='load-btn'>Загрузить еще</button>
+					</div>
+					<div className='add-btn-wrapper'>
+						<img className='add-btn' src='/img/add-btn.svg' alt='add-btn' />
 					</div>
 				</div>
 			</main>
