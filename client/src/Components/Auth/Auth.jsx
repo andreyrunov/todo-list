@@ -6,7 +6,7 @@ import { authUser } from '../../Redux/actions/authAction'
 
 function Auth() {
 	const [inputs, setInputs] = useState({})
-	const dispatch = useDispatch()
+	const dispatch  = useDispatch()
 	const inputHandler = (e) => {
 		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
 		// console.log(e.target.name)
@@ -14,6 +14,7 @@ function Auth() {
 	}
 	const submitHandler = (e) => {
 		e.preventDefault()
+		console.log(inputs)
 		dispatch(authUser(inputs))
 		setInputs({})
 	}

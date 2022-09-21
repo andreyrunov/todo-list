@@ -10,6 +10,9 @@ export const authUser = (value) => (dispatch) => {
 	console.log(value, ' <----------- передаем эти данные на сервак')
 	axios
 		.post('http://localhost:3000/auth/user', value)
-		.then((res) => dispatch(setUser(res.data)))
+		.then((res) => {
+			console.log(res.data, '<----- ответ сервака передаем в диспатч')
+			dispatch(setUser(res.data))
+		})
 		.catch((err) => console.log(err, '<----- ошибка фронт'))
 }
