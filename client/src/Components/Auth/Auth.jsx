@@ -2,10 +2,16 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import './Auth.css'
+import { authUser } from '../../Redux/actions/authAction'
 
 function Auth() {
 	const [inputs, setInputs] = useState({})
 	const dispatch = useDispatch()
+	const inputHandler = (e) => {
+		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+		// console.log(e.target.name)
+		// console.log(e.target.value)
+	}
 	const submitHandler = (e) => {
 		e.preventDefault()
 		dispatch(authUser(inputs))
@@ -19,9 +25,10 @@ function Auth() {
 					<input
 						className='text-input'
 						type='text'
-						name='name'
+						name='username'
+						onChange={inputHandler}
 						placeholder='Имя'
-						value={inputs.name}
+						value={inputs.username || ''}
 					/>
 				</div>
 				<div className='input-wrapper'>
@@ -29,8 +36,9 @@ function Auth() {
 						className='text-input'
 						type='text'
 						name='pass'
+						onChange={inputHandler}
 						placeholder='Пароль'
-						value={inputs.pass}
+						value={inputs.pass || ''}
 					/>
 				</div>
 				<div className='input-wrapper'>

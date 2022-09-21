@@ -1,6 +1,6 @@
-import { SET_USER } from '../types'
+import { SET_USER } from '../Types/Types'
 
-const userReducer = (state = { isFetch: true }, action) => {
+const userReducer = (state = {}, action) => {
 	const { type, payload } = action
 	switch (type) {
 		case SET_USER:

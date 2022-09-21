@@ -3,12 +3,20 @@ const morgan = require('morgan')
 const path = require('path')
 require('dotenv').config()
 const PORT = process.env.PORT
+const axios = require('axios')
+const cors = require('cors')
 const { User } = require('./db/models')
 const bcrypt = require('bcrypt')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const app = express()
-
+// app.use(cors())
+app.use(
+	cors({
+		origin: 'http://localhost:3001',
+		credentials: true,
+	})
+)
 app.use(express.json())
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))
@@ -26,15 +34,20 @@ app.use(
 app
 	.post('/auth/user', async (req, res) => {
 		const { username, pass } = req.body
+		console.log(username, pass, ' <---- данные пользователя c сайта пришли!')
 		if (username && pass) {
-			const user = await User.findOne({ where: { username } })
-			if (username === user.name && pass === user.pass) {
-				req.session.user = { name: user.nickName, id: user.id, role: user.role }
+			const user = await User.findOne({ where: { username }, raw: true })
+			console.log(user, ' <---- данные пользователя из бд пришли!')
+			console.log(user.name)
+			console.log(user.username)
+			console.log(user.pass)
+			if (username === user.username && pass === user.pass) {
+				req.session.user = { name: user.name, id: user.id }
 				return res.json({ name: user.name, id: user.id })
 			}
-			return res.sendStatus(402)
+			return res.sendStatus(402) // если пользователя нет в бд, то этот статус прилетит
 		}
-		return res.sendStatus(403)
+		return res.sendStatus(403) // если не заполнено хотя бы одно поле, то этот статус прилетит
 	})
 
 	.get('/auth/user/logout', (req, res) => {
