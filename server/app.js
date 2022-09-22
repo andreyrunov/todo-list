@@ -27,7 +27,7 @@ app.use(
 		secret: process.env.SESSION,
 		resave: true,
 		maxAge: false, // false - значение по умолчанию, можно указать в миллисекундах
-		saveUninitialized: true,
+		saveUninitialized: true, // сохраняем пустую сессию, если true
 	})
 )
 
