@@ -14,5 +14,11 @@ export const authUser = (value) => (dispatch) => {
 			console.log(res.data, '<----- ответ сервака передаем в диспатч')
 			dispatch(setUser(res.data))
 		})
-		.catch((err) => console.log(err, '<----- ошибка фронт'))
+		.catch((err) => {
+			if (err.response.status === 401) {
+				alert("Ошибка 401 - введите корректный логин и пароль")
+			} else {
+				console.log(err, '<----- ошибка фронт')
+			}
+		})
 }
