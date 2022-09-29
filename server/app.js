@@ -5,8 +5,9 @@ require('dotenv').config()
 const PORT = process.env.PORT
 const axios = require('axios')
 const cors = require('cors')
-const { User } = require('./db/models')
 const bcrypt = require('bcrypt')
+const saltRounds = 10
+const { User } = require('./db/models')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const app = express()
@@ -22,12 +23,13 @@ app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: true }))
 app.use(
 	session({
-		name: 'sessionID',
 		store: new FileStore({}),
+		key: 'sessionID',
 		secret: process.env.SESSION,
-		resave: true,
+		resave: true, // пересохранение сессии (когда что-то поменяли - false)
 		maxAge: false, // false - значение по умолчанию, можно указать в миллисекундах
 		saveUninitialized: true, // сохраняем пустую сессию, если true
+		cookie: { expires: 24 * 60 * 60e3 }, // настройка куки, которую мы устанавливаем: время жизни (24 часа, в каждом часе 60 минут, в каждой минуте 60 000 миллисекунд)
 	})
 )
 
@@ -43,7 +45,7 @@ app
 				console.log(user.username)
 				console.log(user.pass)
 				if (username === user.username && pass === user.pass) {
-					req.session.user = { name: user.name, id: user.id }
+					req.session.userId = { name: user.name, id: user.id }
 					return res.json({ name: user.name, id: user.id })
 				}
 				return res.sendStatus(402) // если пользователя нет в бд, то этот статус прилетит
