@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import './Register.css'
+import { regUser } from '../../Redux/actions/authAction'
 
 function Register() {
+	const [inputs, setInputs] = useState({})
+	const dispatch = useDispatch()
+	const inputHandler = (e) => {
+		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+	}
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+		dispatch(regUser(inputs))
+		setInputs({})
+	}
 	return (
-		<form name='authForm' method='post' action='input1.php'>
+		<form onSubmit={submitHandler}>
 			<div className='wrapper-auth'>
 				<div className='input-wrapper'>
 					<input
@@ -12,6 +25,8 @@ function Register() {
 						type='text'
 						name='name'
 						placeholder='Имя'
+						onChange={inputHandler}
+						value={inputs.name || ''}
 					/>
 				</div>
 				<div className='input-wrapper'>
@@ -20,6 +35,8 @@ function Register() {
 						type='text'
 						name='username'
 						placeholder='Логин'
+						onChange={inputHandler}
+						value={inputs.username || ''}
 					/>
 				</div>
 				<div className='input-wrapper'>
@@ -28,6 +45,8 @@ function Register() {
 						type='text'
 						name='pass'
 						placeholder='Пароль'
+						onChange={inputHandler}
+						value={inputs.pass || ''}
 					/>
 				</div>
 				<div className='input-wrapper'>

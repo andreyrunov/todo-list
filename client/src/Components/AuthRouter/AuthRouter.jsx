@@ -6,9 +6,9 @@ import Auth from '../Auth/Auth'
 function AuthRouter({ children }) {
 	const { user } = useSelector((state) => state)
 	const location = useLocation()
-	if (!user) {
-		 return children
-		//return <Auth />
+	if (user.id === undefined) {
+		 //return children
+		return <Auth />
 	} else {
 		return <Navigate to='/task-list' state={{ from: location }} replace />
 	}

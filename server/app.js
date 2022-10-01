@@ -14,8 +14,8 @@ const app = express()
 // app.use(cors())
 app.use(
 	cors({
-		origin: 'http://localhost:3001',
 		credentials: true,
+		origin: 'http://localhost:3001', // тут мы говорим серверу, что если получаем с фронта с этого адреса какие-то credentials (куки), то мы их принимаем
 	})
 )
 app.use(express.json())
@@ -56,7 +56,21 @@ app
 		}
 		return res.sendStatus(403) // если не заполнено хотя бы одно поле, то этот статус прилетит
 	})
-
+	.post('/user/registration', async (req, res) => {
+		const { name, username, pass } = req.body
+		if (name && username && pass) {
+			const user = await User.findOne({ where: { username }, raw: true })
+			if (user) {
+				return res.sendStatus(401)
+			}
+			const newUser = await User.create({
+				...req.body,
+			})
+			req.session.userId = { name: newUser.name, id: newUser.id }
+			return res.json({ name: newUser.name, id: newUser.id })
+		}
+		return res.sendStatus(402)
+	})
 	.get('/auth/user/logout', (req, res) => {
 		// console.log('<<----- GET запрос на уничт сессии и чистку КУКов')
 		req.session.destroy()

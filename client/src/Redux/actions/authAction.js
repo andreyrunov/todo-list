@@ -16,9 +16,16 @@ export const authUser = (value) => (dispatch) => {
 		})
 		.catch((err) => {
 			if (err.response.status === 401) {
-				alert("Ошибка 401 - введите корректный логин и пароль")
+				alert('Ошибка 401 - введите корректный логин и пароль')
 			} else {
 				console.log(err, '<----- ошибка фронт')
 			}
 		})
 }
+
+export const regUser = (value) => (dispatch) => {
+	axios
+		.post('http://localhost:3000/user/registration', value)
+		.then((response) => dispatch(setUser(response.data)))
+		.catch((err) => console.log(err))
+} // в качестве value нам поступит объект наших инпутов => дальше идет функция, которая будет возвращать другую функцию и в нее мы положим dispatch (в круглых скобках) => и далее уже будет происходить сам запрос

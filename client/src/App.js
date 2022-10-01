@@ -26,11 +26,11 @@ function App() {
 								</AuthRouter>
 							}
 						/>
+						<Route path='/register' element={<Register />} />
 					</>
 				)}
 				{user.id && (
 					<>
-						<Route path='/register' element={<Register />} />
 						<Route path='/task-list' element={<TaskList />} />
 						<Route path='/add-task' element={<AddTask />} />
 					</>
@@ -41,3 +41,4 @@ function App() {
 }
 
 export default App
+	
