@@ -12,6 +12,9 @@ function TaskList() {
 			</header>
 			<main className='main'>
 				<div className='main-content-wrapper'>
+					<div className='logout'>
+						<img src='/img/power-off.png' alt='' />
+					</div>
 					<div className='controls'>
 						<div className='controls-text'>
 							<span>8 задач</span>

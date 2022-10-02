@@ -45,7 +45,7 @@ app
 				console.log(user.username)
 				console.log(user.pass)
 				if (username === user.username && pass === user.pass) {
-					req.session.userId = { name: user.name, id: user.id }
+					req.session.user = { name: user.name, id: user.id }
 					return res.json({ name: user.name, id: user.id })
 				}
 				return res.sendStatus(402) // если пользователя нет в бд, то этот статус прилетит
@@ -66,10 +66,17 @@ app
 			const newUser = await User.create({
 				...req.body,
 			})
-			req.session.userId = { name: newUser.name, id: newUser.id }
+			req.session.user = { name: newUser.name, id: newUser.id }
 			return res.json({ name: newUser.name, id: newUser.id })
 		}
 		return res.sendStatus(402)
+	})
+	.post('/check', (req, res) => {
+		if(req.session.user) {
+			console.log(req.session.user)
+			return res.json(req.session.user)
+		}
+		return res.sendStatus(401)
 	})
 	.get('/auth/user/logout', (req, res) => {
 		// console.log('<<----- GET запрос на уничт сессии и чистку КУКов')

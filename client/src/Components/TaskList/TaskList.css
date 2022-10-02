@@ -36,6 +36,22 @@
     width: 680px;
 }
 
+.logout {
+    height: 24px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.logout img {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.logout img:hover {
+    opacity: 70%;
+}
+
 .controls {
     margin-top: 30px;
     margin-left: 10px;

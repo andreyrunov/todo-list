@@ -29,3 +29,10 @@ export const regUser = (value) => (dispatch) => {
 		.then((response) => dispatch(setUser(response.data)))
 		.catch((err) => console.log(err))
 } // в качестве value нам поступит объект наших инпутов => дальше идет функция, которая будет возвращать другую функцию и в нее мы положим dispatch (в круглых скобках) => и далее уже будет происходить сам запрос
+
+export const checkUser = () => (dispatch) => {
+	axios
+		.post('http://localhost:3000/check')
+		.then((response) => dispatch(setUser(response.data)))
+		.catch((err) => console.log(err))
+}

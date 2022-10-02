@@ -7,16 +7,17 @@ import TaskList from './Components/TaskList/TaskList'
 import AuthRouter from './Components/AuthRouter/AuthRouter'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { checkUser } from './Redux/actions/authAction'
 function App() {
 	const { user } = useSelector((state) => state)
 	const dispatch = useDispatch()
-	// useEffect(() => {
-	// 	dispatch(checkUser())
-	// }, [])
+	useEffect(() => {
+		dispatch(checkUser())
+	}, [])
 	return (
 		<div className='App'>
 			<Routes>
-				{!user.id && (
+				{user === {} && (
 					<>
 						<Route
 							path='/'
@@ -41,4 +42,3 @@ function App() {
 }
 
 export default App
-	
