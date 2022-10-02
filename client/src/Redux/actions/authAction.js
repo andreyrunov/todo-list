@@ -36,3 +36,10 @@ export const checkUser = () => (dispatch) => {
 		.then((response) => dispatch(setUser(response.data)))
 		.catch((err) => console.log(err))
 }
+
+export const userLogOut = () => (dispatch) => {
+	axios
+		.get('http://localhost:3000/auth/user/logout')
+		.then((res) => dispatch(setUser({})))
+		.catch((err) => console.log(err))
+}

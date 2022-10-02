@@ -17,14 +17,14 @@ function App() {
 	return (
 		<div className='App'>
 			<Routes>
-				{user === {} && (
+				{user === {} && (	
 					<>
 						<Route
 							path='/'
 							element={
-								<AuthRouter>
+								//<AuthRouter>
 									<Auth />
-								</AuthRouter>
+								//</AuthRouter>
 							}
 						/>
 						<Route path='/register' element={<Register />} />
