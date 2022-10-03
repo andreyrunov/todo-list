@@ -88,6 +88,12 @@ h6 {
   font-weight: 400;
 }
 
+.mySpin {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
 /*--------------------*/
 
 /* @media (prefers-reduced-motion: no-preference) {

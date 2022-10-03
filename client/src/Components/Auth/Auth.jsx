@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, Navigate, useLocation } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import './Auth.css'
 import { authUser } from '../../Redux/actions/authAction'
@@ -8,7 +8,8 @@ function Auth() {
 	const [inputs, setInputs] = useState({})
 	const { user } = useSelector((state) => state)
 	const location = useLocation()
-	const dispatch  = useDispatch()
+	const navigation = useNavigate()
+	const dispatch = useDispatch()
 	const inputHandler = (e) => {
 		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }))
 		// console.log(e.target.name)
@@ -19,11 +20,13 @@ function Auth() {
 		console.log(inputs)
 		dispatch(authUser(inputs))
 		setInputs({})
+		navigation('/task-list', { replace: true })
 	}
-	if (user.id === undefined) {
+
+	if (!user.id) {
 		return (
 			// <form name='authForm' method='post' action='/auth/user'>
-	
+
 			<form onSubmit={submitHandler}>
 				<div className='wrapper-auth'>
 					<div className='input-wrapper'>
@@ -53,7 +56,11 @@ function Auth() {
 							</div>
 							<div className='btn-wrapper-wrap'>
 								<Link to='/register'>
-									<input className='reg-btn' type='submit' value='Регистрация' />
+									<input
+										className='reg-btn'
+										type='submit'
+										value='Регистрация'
+									/>
 								</Link>
 							</div>
 						</div>
