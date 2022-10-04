@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { userLogOut } from '../../Redux/actions/authAction'
 import TaskItem from '../TaskItem/TaskItem'
+import MySpinner from '../Spinner/MySpinner'
 import './TaskList.css'
 
 function TaskList() {
@@ -17,11 +18,16 @@ function TaskList() {
 	}
 	// state={{ from: location }} replace
 	// if (user.id) {
+	// useEffect(() => {
+	// 	navigate('/', { replace: true })
+	// }, [])
 	return (
 		<>
-			{user === null ? (
-				<Navigate to='/' state={{ from: location }} replace />
-			) : (
+			{user === undefined && (
+				//<Navigate to='/' state={{ from: location }} replace />
+				<MySpinner />
+			)}
+			{user && (
 				<div className='tasklist-wrapper'>
 					<header className='header'>
 						<div className='img-wrapper'>

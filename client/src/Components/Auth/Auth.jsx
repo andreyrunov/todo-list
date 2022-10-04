@@ -23,7 +23,7 @@ function Auth() {
 		navigation('/task-list', { replace: true })
 	}
 
-	if (!user.id) {
+	if (user === null) {
 		return (
 			// <form name='authForm' method='post' action='/auth/user'>
 

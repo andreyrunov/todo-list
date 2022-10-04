@@ -20,28 +20,26 @@ function App() {
 	}, [])
 	return (
 		<div className='App'>
-			{user !== null ? (
+
 				<Routes>
+					<Route
+				
+						path='/'
+						element={
+							//<AuthRouter>
+								<Auth />
+							//</AuthRouter>
+						}
+					/>
 					<Route
 						path='/task-list'
 						element={
-							//<UserAuthorised>
+							<UserAuthorised>
 								<TaskList />
-							//</UserAuthorised>
+							</UserAuthorised>
 						}
 					/>
 					<Route path='/add-task' element={<AddTask />} />
-				</Routes>
-			) : (
-				<Routes>
-					<Route
-						path='/'
-						element={
-							<AuthRouter>
-								<Auth />
-							</AuthRouter>
-						}
-					/>
 					<Route
 						path='/register'
 						element={
@@ -51,7 +49,7 @@ function App() {
 						}
 					/>
 				</Routes>
-			)}
+
 		</div>
 	)
 }
