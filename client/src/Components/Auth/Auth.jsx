@@ -20,7 +20,7 @@ function Auth() {
 		console.log(inputs)
 		dispatch(authUser(inputs))
 		setInputs({})
-		navigation('/task-list', { replace: true })
+		//navigation('/task-list', { replace: true })
 	}
 
 	if (user === null) {
