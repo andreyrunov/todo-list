@@ -5,6 +5,7 @@ import { checkUser, userLogOut } from '../../Redux/actions/authAction'
 import TaskItem from '../TaskItem/TaskItem'
 import MySpinner from '../Spinner/MySpinner'
 import './TaskList.css'
+import UserAuthorised from '../isAuthorised/UserAuthorised'
 
 function TaskList() {
 	const { user } = useState((state) => state)
@@ -20,14 +21,17 @@ function TaskList() {
 	// state={{ from: location }} replace
 	// useEffect(() => {
 	// 	navigate('/', { replace: true })
-	// }, [check])	
+	// }, [check])
 	// if (user !== undefined || user !== null) {
-		return (
-			<>
-				{user === undefined ? (
-					//<Navigate to='/' state={{ from: location }} replace />
-					<MySpinner />
-				) : (
+	return (
+		<>
+			{user === undefined && (
+				//<Navigate to='/' state={{ from: location }} replace />
+				<MySpinner />
+			)}
+
+			{user && (
+				<UserAuthorised>
 					<div className='tasklist-wrapper'>
 						<header className='header'>
 							<div className='img-wrapper'>
@@ -81,13 +85,12 @@ function TaskList() {
 							</div>
 						</footer>
 					</div>
-				)}
-
-			
-			</>
-		)
+				</UserAuthorised>
+			)}
+		</>
+	)
 	// } else {
-		//return <Navigate to='/' state={{ from: location }} replace />
+	//return <Navigate to='/' state={{ from: location }} replace />
 	// }
 }
 

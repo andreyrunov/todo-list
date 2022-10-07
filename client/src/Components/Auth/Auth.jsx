@@ -26,7 +26,7 @@ function Auth() {
 	if (user === null) {
 		return (
 			// <form name='authForm' method='post' action='/auth/user'>
-
+			
 			<form onSubmit={submitHandler}>
 				<div className='wrapper-auth'>
 					<div className='input-wrapper'>
