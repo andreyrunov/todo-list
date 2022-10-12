@@ -73,7 +73,7 @@ app
 		return res.sendStatus(402)
 	})
 	.post('/check', (req, res) => {
-		if(req.session.user) {
+		if (req.session.user) {
 			console.log(req.session.user)
 			return res.json(req.session.user)
 		}
@@ -83,6 +83,14 @@ app
 		// console.log('<<----- GET запрос на уничт сессии и чистку КУКов')
 		req.session.destroy()
 		res.clearCookie('sessionID').sendStatus(200)
+	})
+	.get('/task-list', async (req, res) => {
+		if (req.session.user) {
+			const id = req.session.user.id
+			const userData = await User.findOne({ where: { user_id: id }, raw: true })
+			console.log(userData, '<------- Данные пользователя')
+			return res.json(userData)
+		}
 	})
 
 app.listen(PORT, () => {

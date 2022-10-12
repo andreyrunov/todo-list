@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
-import { checkUser, userLogOut } from '../../Redux/actions/authAction'
+import { checkUser, getUserData, userLogOut } from '../../Redux/actions/authAction'
 import TaskItem from '../TaskItem/TaskItem'
 import MySpinner from '../Spinner/MySpinner'
 import './TaskList.css'
@@ -19,19 +19,16 @@ function TaskList() {
 		//navigate('/', { replace: true })
 	}
 	// state={{ from: location }} replace
-	// useEffect(() => {
-	// 	navigate('/', { replace: true })
-	// }, [check])
+	useEffect(() => {
+		dispatch(getUserData())
+	}, [])
 	// if (user !== undefined || user !== null) {
 	return (
 		<>
-			{user === undefined && (
-				//<Navigate to='/' state={{ from: location }} replace />
-				<MySpinner />
-			)}
+		
 
-			{user && (
-				<UserAuthorised>
+
+				{/* <UserAuthorised> */}
 					<div className='tasklist-wrapper'>
 						<header className='header'>
 							<div className='img-wrapper'>
@@ -85,8 +82,8 @@ function TaskList() {
 							</div>
 						</footer>
 					</div>
-				</UserAuthorised>
-			)}
+				{/* </UserAuthorised> */}
+
 		</>
 	)
 	// } else {

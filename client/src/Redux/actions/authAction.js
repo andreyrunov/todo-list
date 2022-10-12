@@ -1,8 +1,14 @@
 import axios from 'axios'
 import { SET_USER } from '../Types/Types'
+import { GET_USER_DATA } from '../Types/Types'
 
 export const setUser = (value) => ({
 	type: SET_USER,
+	payload: value,
+})
+
+export const userData = (value) => ({
+	type: GET_USER_DATA,
 	payload: value,
 })
 
@@ -41,5 +47,12 @@ export const userLogOut = () => (dispatch) => {
 	axios
 		.get('http://localhost:3000/auth/user/logout')
 		.then((res) => dispatch(setUser(null)))
+		.catch((err) => console.log(err))
+}
+
+export const getUserData = () => (dispatch) => {
+	axios
+		.get('http://localhost:3000/task-list')
+		.then((res) => dispatch(userData(null)))
 		.catch((err) => console.log(err))
 }

@@ -32,7 +32,7 @@ function App() {
 						}
 					/>
 					<Route
-						path='/task-list'
+						path='/task-list/'
 						element={
 							<UserAuthorised>
 								<TaskList />
